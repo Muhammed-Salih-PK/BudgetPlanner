@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Personal Budget Planner
 
-## Getting Started
+A **Personal Budget Planner** built with **Next.js (App Router)**, **TypeScript**, and **Tailwind CSS**.  
+This web app lets users **add, edit, delete, and analyze daily transactions** under **Income** and **Expenditure** with a responsive dashboard and charts.
 
-First, run the development server:
+---
 
+## 🚀 Features
+
+### Core
+- **Add Transactions** with: Date, Name, Amount, Type (Income/Expenditure)
+- **Editable & Deletable** rows in an Excel-like table
+- **Tabs/Sections:** Income, Expenditure, and optional **All**
+- **Summary/Dashboard:** totals for **Income**, **Expenditure**, **Balance (Income − Expenditure)**
+- **Charts:** compare Income vs Expenditure over time (ApexCharts)
+- **Persistence:** Zustand store synced to `localStorage` (survives reloads)
+- **Responsive UI:** Tailwind-based, mobile & desktop friendly
+
+### Bonus 
+- Filters: by date range or search by name
+- Categories: e.g., Food, Salary, Rent
+- Export to **CSV**
+- **Dark mode** via `next-themes`
+
+---
+
+## 🛠 Tech Stack
+
+- **Framework:** Next.js 15 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS v4
+- **Charts:** ApexCharts + react-apexcharts
+- **State:** Zustand
+- **Icons:** react-icons
+- **Theme:** next-themes (dark/light)
+
+---
+
+## 📦 Installation
+
+1) **Clone**
+```bash
+git clone https://github.com/Muhammed-Salih-PK/budget-planner.git
+cd budget-planner 
+```
+2) **Install**
+```bash
+npm install
+```
+3) **Run (development)**
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+The app will be available at http://localhost:3000
+3) **Run (Build & Start (production))**
+```bash
+npm run build
+npm start
+```
+## 🖥 Usage Guide
+- Open Income or Expenditure tab.
+- Add transactions using the input form (Date, Name, Amount, Type).
+- Edit or delete entries inline in the table.
+- View totals and charts in the Dashboard section.
+- Toggle Dark Mode using the theme switch.
+- Filter by date/name or export data to CSV.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 💾 Data Persistence
+- Transactions are managed with Zustand.
+- Data is saved to localStorage so it survives browser reloads.
+- No backend or database is required.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 👤 Author
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Muhammed Salih**  
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- GitHub: [@Muhammed-Salih-PK](https://github.com/Muhammed-Salih-PK)  
+- LinkedIn: [Muhammed Salih](https://www.linkedin.com/in/mhdsalihpk)
