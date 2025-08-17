@@ -4,6 +4,7 @@ import { CategoryType, FormState, TransactionTypes } from "@/types/transaction";
 import React, { useState } from "react";
 import { Select, SelectOption } from "./ui/Select";
 import { FiArrowDown, FiArrowUp } from "react-icons/fi";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   FiShoppingBag,
   FiTruck,
@@ -12,8 +13,7 @@ import {
   FiHome,
   FiMoreHorizontal,
 } from "react-icons/fi";
-
-
+import { FaCheckCircle } from "react-icons/fa";
 
 export default function TransactionForm() {
   const addTransaction = useTransactionStore((s) => s.addTransaction);
@@ -24,6 +24,7 @@ export default function TransactionForm() {
     type: "expense",
     category: "",
   });
+  const [success, setSuccess] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,7 +37,9 @@ export default function TransactionForm() {
       type: form.type,
       category: form.category,
     });
-    setForm((prev) => ({ ...prev, name: "", amount: "" })); // Keep date and type
+    setForm((prev) => ({ ...prev, name: "", amount: "", category: "" })); // Keep date and type
+    setSuccess(true);
+    setTimeout(() => setSuccess(false), 3000);
   };
 
   const transactionTypeOptions: SelectOption<TransactionTypes>[] = [
@@ -87,6 +90,24 @@ export default function TransactionForm() {
   ];
   return (
     <form onSubmit={handleSubmit} className='space-y-4'>
+      <AnimatePresence>
+        {success && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className='mb-6 p-4 bg-emerald-50 dark:bg-emerald-900/20 
+                 border border-emerald-200 dark:border-emerald-800 
+                 rounded-lg flex items-start gap-3'
+          >
+            <FaCheckCircle className='text-emerald-500 dark:text-emerald-400 mt-0.5 flex-shrink-0' />
+            <p className='text-emerald-700 dark:text-emerald-300'>
+              Transaction added successfully!
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
       <div className='grid grid-cols-1 md:grid-cols-5 gap-4'>
         {/* Transaction Type */}
         <div className='relative'>
